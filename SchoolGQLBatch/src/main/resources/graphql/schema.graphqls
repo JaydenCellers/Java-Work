@@ -1,0 +1,50 @@
+type School{
+	id: ID!
+	name: String!
+}
+
+type Teacher{
+	id: ID!
+	name: String!
+	subject: String
+	school: School
+}
+
+type Student{
+	id: ID!
+	name: String!
+	gradeLevel: String
+	teacher: Teacher
+	school: School
+}
+
+
+type Query {
+	findAllSchools: [School]!
+	findAllTeachers: [Teacher]!
+	findAllStudents: [Student]!
+	
+	findSchoolById(id: ID!): School!
+	findTeacherById(id: ID!): Teacher!
+	findStudentById(id: ID!): Student!
+}
+
+
+type Mutation {
+	addSchool(name: String!): School!
+	addTeacher(name: String!, subject: String, schoolId: ID!): Teacher!
+	addStudent(name: String!, gradeLevel: String, teacherId: ID!, schoolId: ID!): Student!
+	
+	updateTeacher(id: ID!, name: String, subject: String, schoolId: ID): Teacher!
+	updateStudent(id: ID!, name: String, gradeLevel: String, schoolId: ID, teacherId: ID): Student!
+	
+	deleteSchool(id: ID!): Boolean
+	deleteTeacher(id: ID!): Boolean
+	deleteStudent(id: ID!): Boolean
+}
+
+type Subscription{
+	schools: [School]
+	teachers: [Teacher]
+	students: [Student]
+}
