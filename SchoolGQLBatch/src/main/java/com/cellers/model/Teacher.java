@@ -2,16 +2,22 @@ package com.cellers.model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@ToString
+@JsonInclude(Include.NON_ABSENT)
 public class Teacher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

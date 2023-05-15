@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.BatchMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,7 @@ public class Query {
 	}
 	
 	@QueryMapping
-	public School findSchoolById(Long id) {
+	public School findSchoolById(@Argument Long id) {
 		return schoolRepository.findById(id).get();
 	}
 
@@ -48,7 +49,7 @@ public class Query {
 	}
 	
 	@QueryMapping
-	public Teacher findTeacherById(Long id) {
+	public Teacher findTeacherById(@Argument Long id) {
 		return teacherRepository.findById(id).get();
 	}
 
@@ -58,7 +59,7 @@ public class Query {
 	}
 	
 	@QueryMapping
-	public Student findStudentById(Long id) {
+	public Student findStudentById(@Argument Long id) {
 		return studentRepository.findById(id).get();
 	}
 	
